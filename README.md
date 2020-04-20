@@ -30,13 +30,13 @@ Starting with the basics, given only a user-item-rating matrix as described unde
 
 ### Matrix Factorization
 1. Given a utility matrix _R_ with _n_ rows and _m_ columns (i.e. _n_ users and _m_ items)
-2. Find _U_ with _n_ rows x _d_ columns, _V_ with _d_ rows x m columns, so that: _U_ · _V_ ≈ _R_
-3. Measure the approximation with root-mean-square-error (RMSE) computed where R​ ≠ 0
+2. Find _U_ with _n_ rows x _d_ columns, _V_ with _d_ rows x _m_ columns, so that: _U_ · _V_ ≈ _R_
+3. Measure the approximation with root-mean-square-error (RMSE) computed where _R_​ ≠ 0
 4. Minimize RMSE using stochastic gradient descent
 
 The neural network training algorithm provides a way to minimize RMSE using gradient descent, and the computation framework (Tensorflow + Keras) has a layer that represents the matrix dot product, so we can build a structure to perform factorization as shown below:
 
-![Matrix Factorization with Neural Networks](./images/matrix_factor_nn.png)
+![Matrix Factorization with Neural Networks](./assets/matrix_factor_nn.png)
 
 Matrix factorization assumes that you have a large number of users that have provided a large number of ratings spread across the item dataset. There will always be users that rate nothing and items with no ratings, but those should be a small subset of the data for factorization to work well. 
 
@@ -50,13 +50,13 @@ To leverage contextual information about the users and items and solve the cold 
 
 Let's consider a case where items have an associated image.  We use a common network pre-trained on ImageNet to generate image embeddings, such as VGG16 or ResNet50.  We then train an autoencoder to reduce the dimensionality of the generated image embeddings to match the dimensions of the item embedding layer.  An example network architecture in this case is depicted below:
 
-![Leveraging Item Metadata](./images/matrix_item_meta.png)
+![Leveraging Item Metadata](./assets/matrix_item_meta.png)
 
 We can similarly apply this concept to text descriptions by creating text embeddings.  In this repo, we provide a solution that incorporates image, text, and structured metadata for items, as well as text and structured metadata for users.
 
 There are many ways to construct this architecture to incorporate metadata and produce ratings.  While the network architecture above adds the item metadata to the item embedding, concatenating would also work, and experimentation should be done to develop an optimal architecture for your scenario.  Similarly, the architecture shows a dot product to generate the final rating prediction, whereas a Dense layer with one neuron could also be used.  For example, one final architecture we developed in this repo is illustrated below:
 
-![User and Item Metadata](./images/user_item_meta.png)
+![User and Item Metadata](./assets/user_item_meta.png)
 
 ## Implementation
 The notebooks provided in this repo are as follows:

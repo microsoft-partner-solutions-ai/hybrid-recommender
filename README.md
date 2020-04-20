@@ -67,3 +67,6 @@ The notebooks provided in this repo are as follows:
 
 ## Contributors
 Special thanks to Giovanni Marchetti and Kate Baroni for their tremendous contributions to designing the approach.
+
+## License
+Licensed using the MIT License (MIT); Copyright (c) Microsoft Corporation. For more information, please see [LICENSE](./License)

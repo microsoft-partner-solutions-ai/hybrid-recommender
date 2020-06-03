@@ -1,6 +1,6 @@
 # Hybrid Recommendation Engine
 
-This repo contains notebooks to train a hybrid recommender that incorporates user and item features, including image and text features.
+This repo contains notebooks to train a hybrid recommendendation system that incorporates user and item features, including image and text features.
 
 ## Overview
 
